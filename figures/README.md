@@ -1,9 +1,6 @@
 # Figures from the paper
 
-This directory contains the figure sources (PDF) and rendered PNG previews used
-in the README. The PNGs are conversions of the PDFs, not new results. The
-firmware MIT license does **not** apply to these figures; please cite the
-paper when reusing them.
+The firmware MIT license does **not** apply to these figures; please cite the paper when reusing them.
 
 - `GraphAbstract`: graphical abstract.
 - `SysArch`: Fig. 1, system architecture.
