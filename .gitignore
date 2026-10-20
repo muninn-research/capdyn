@@ -1,0 +1,15 @@
+# LTspice large outputs / generated files
+*.raw
+*.log
+*.op.raw
+*.wave
+*.tmp
+*.bak
+*.zip
+# Keep original LTspice models (.asc, .cir, .net, .lib) under version control
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+.vscode/
+.idea/

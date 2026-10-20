@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: 'If you use this research artifact, please cite the associated IEEE Sensors Journal paper.'
+title: 'Energy-Admissible Task Execution for Battery-Free Wireless Sensors: Research Artifacts'
+type: software
+license: MIT
+authors:
+  - family-names: Nardello
+    given-names: Matteo
+    affiliation: University of Trento
+  - family-names: Doglioni
+    given-names: Maria
+    affiliation: University of Trento
+  - family-names: Pastorelli
+    given-names: Patrick
+    affiliation: University of Trento
+  - family-names: Brunelli
+    given-names: Davide
+    affiliation: University of Bologna
+preferred-citation:
+  type: article
+  title: 'Reliable Energy-Aware Task Execution for Battery-free Wireless Sensors'
+  authors:
+    - family-names: Nardello
+      given-names: Matteo
+      affiliation: University of Trento
+    - family-names: Doglioni
+      given-names: Maria
+      affiliation: University of Trento
+    - family-names: Pastorelli
+      given-names: Patrick
+      affiliation: University of Trento
+    - family-names: Brunelli
+      given-names: Davide
+      affiliation: University of Bologna
+  journal: IEEE Sensors Journal
+  year: 2026
+  status: in-press

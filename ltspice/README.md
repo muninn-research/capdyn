@@ -1,0 +1,14 @@
+# LTspice models — pending upload
+
+The LTspice schematics, netlists, libraries, simulation input files and
+analysis scripts are **not included yet**. They will be added here in a future
+update.
+
+The paper evaluates 3–7 CapDYN stages with D1/D2 banks, compares against
+S0/S1/S2/AB, and uses a photovoltaic irradiance trace over 18,000 s with
+input power disabled during each active task. Detailed task profiles and
+stage values transcribed from the paper appear under `../data/`.
+
+Per the authors, individual LTspice simulations take approximately 3–5 days,
+and the complete raw simulation output exceeds 300 GB. Only executable
+model/configuration inputs, not those raw outputs, are intended for release.
