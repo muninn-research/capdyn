@@ -1,0 +1,42 @@
+\begin{table}[t]
+\centering
+\caption{Timely successful-task yield gain of \sysname relative to the reference baselines. Positive values indicate higher time-weighted useful task yield.}
+\label{tab:timely_task_yield}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}llcrrrrr@{}}
+\toprule
+Task set & Bank & $N$ & $Y_{\sysname}$ & S0 & S1 & S2 & AB \\
+\midrule
+Expon. & D1 & 3 & 8.175 & 58.07 & 26.47 & 3.69 & 21.33 \\
+Expon. & D1 & 4 & 8.198 & 58.52 & 26.83 & 3.99 & 21.77 \\
+Expon. & D1 & 5 & 8.224 & 59.01 & 27.23 & 4.31 & 22.57 \\
+Expon. & D1 & 6 & 8.197 & 58.50 & 26.82 & 3.97 & 22.39 \\
+Expon. & D1 & 7 & 8.176 & 58.09 & 26.49 & 3.71 & 23.32 \\
+\midrule
+Expon. & D2 & 3 & 8.240 & 59.33 & 27.48 & 4.52 & 37.18 \\
+Expon. & D2 & 4 & 8.267 & 59.85 & 27.90 & 4.86 & 22.77 \\
+Expon. & D2 & 5 & 8.240 & 59.32 & 27.48 & 4.52 & 22.78 \\
+Expon. & D2 & 6 & 8.220 & 58.94 & 27.17 & 4.26 & 23.68 \\
+Expon. & D2 & 7 & 7.950 & 53.72 & 22.99 & 0.84 & 23.00 \\
+\midrule
+Linear & D1 & 3 & 5.543 & 35.11 & 19.75 & -0.93 & 7.49 \\
+Linear & D1 & 4 & 5.534 & 34.88 & 19.55 & -1.10 & 7.56 \\
+Linear & D1 & 5 & 5.524 & 34.64 & 19.34 & -1.27 & 7.53 \\
+Linear & D1 & 6 & 5.504 & 34.15 & 18.91 & -1.63 & 7.70 \\
+Linear & D1 & 7 & 5.466 & 33.24 & 18.10 & -2.30 & 8.27 \\
+\midrule
+Linear & D2 & 3 & 5.552 & 35.33 & 19.96 & -0.76 & 7.41 \\
+Linear & D2 & 4 & 5.538 & 34.98 & 19.64 & -1.02 & 7.40 \\
+Linear & D2 & 5 & 5.512 & 34.34 & 19.08 & -1.49 & 7.72 \\
+Linear & D2 & 6 & 5.332 & 29.96 & 15.19 & -4.71 & 7.81 \\
+Linear & D2 & 7 & 5.243 & 27.80 & 13.28 & -6.29 & 8.38 \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{2pt}
+\footnotesize
+\textbf{Notes.} $Y_{\sysname}$ is the absolute timely successful-task yield of \sysname. The S0, S1, S2, and AB columns report $G^Y_{\sysname/r}$ in percent.
+\end{table}

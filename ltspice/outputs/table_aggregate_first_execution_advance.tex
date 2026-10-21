@@ -1,0 +1,42 @@
+\begin{table}[t]
+\centering
+\caption{Aggregate first-completion advance of \sysname relative to the reference baselines. Positive values indicate earlier first successful task completion under \sysname.}
+\label{tab:aggregate_first_completion_advance}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}llcrrrr@{}}
+\toprule
+Task set & Bank & $N$ & S0 & S1 & S2 & AB \\
+\midrule
+Expon. & D1 & 3 & 40.04 & 36.14 & 18.66 & 30.47 \\
+Expon. & D1 & 4 & 40.92 & 36.98 & 19.78 & 31.43 \\
+Expon. & D1 & 5 & 41.60 & 37.66 & 21.83 & 32.62 \\
+Expon. & D1 & 6 & 40.69 & 36.74 & 20.49 & 32.07 \\
+Expon. & D1 & 7 & 39.59 & 35.57 & 19.05 & 32.55 \\
+\midrule
+Expon. & D2 & 3 & 42.74 & 38.78 & 22.84 & 33.10 \\
+Expon. & D2 & 4 & 45.00 & 41.03 & 28.74 & 35.89 \\
+Expon. & D2 & 5 & 44.91 & 40.94 & 28.61 & 35.91 \\
+Expon. & D2 & 6 & 44.69 & 40.70 & 28.29 & 36.20 \\
+Expon. & D2 & 7 & 41.00 & 36.93 & 23.18 & 34.39 \\
+\midrule
+Linear & D1 & 3 & 35.22 & 23.80 & 0.76 & 12.61 \\
+Linear & D1 & 4 & 34.91 & 23.48 & 0.26 & 12.55 \\
+Linear & D1 & 5 & 34.44 & 23.03 & -0.40 & 12.33 \\
+Linear & D1 & 6 & 33.67 & 22.26 & -1.47 & 12.24 \\
+Linear & D1 & 7 & 32.51 & 21.11 & -3.01 & 12.73 \\
+\midrule
+Linear & D2 & 3 & 35.97 & 24.55 & 1.84 & 12.90 \\
+Linear & D2 & 4 & 35.97 & 24.54 & 1.83 & 13.04 \\
+Linear & D2 & 5 & 35.58 & 24.13 & 1.27 & 13.11 \\
+Linear & D2 & 6 & 33.59 & 21.94 & -1.61 & 13.13 \\
+Linear & D2 & 7 & 31.91 & 20.23 & -3.94 & 13.29 \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{2pt}
+\footnotesize
+\textbf{Notes.} Values report $A_{\sysname/r}$ in percent. Positive values indicate earlier first task completion under \sysname. AB denotes the ablation without energy-admissible task dispatch.
+\end{table}

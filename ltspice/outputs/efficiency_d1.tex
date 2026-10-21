@@ -1,0 +1,37 @@
+\begin{table}[t]
+\centering
+\caption{Efficiency, EEU and infrastructural power consumption comparison for single-cap baselines, ablation, and CapDYN, D1 bank.}
+\label{tab:efficiency_d1}
+\scriptsize
+\setlength{\tabcolsep}{1.4pt}
+\renewcommand{\arraystretch}{1.05}
+\scalebox{1}{%
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+\multirow{2}{*}{Ref.} & \multirow{2}{*}{$N$}
+& \multicolumn{2}{c}{Eff. (\%)}
+& \multicolumn{2}{c}{EEU (\%)}
+& \multirow{2}{*}{$P_\mathrm{INFR}$ ($\mu$W)} \\
+\cmidrule(lr){3-4}
+\cmidrule(lr){5-6}
+& & Exp. & Lin. & Exp. & Lin. & \\
+\midrule
+S0 & -- & 89.09 & 92.70 & 63.07 & 77.89 & -- \\
+S1 & -- & 85.63 & 89.03 & 85.63 & 89.03 & 4.186 \\
+S2 & -- & 86.37 & 89.84 & 86.37 & 89.84 & 1.635 \\
+\midrule
+Abl. & 3 & 95.97 & 96.65 & 95.97 & 96.65 & 11.925 \\
+Abl. & 4 & 95.46 & 96.26 & 95.46 & 96.26 & 12.309 \\
+Abl. & 5 & 94.55 & 95.60 & 94.55 & 95.60 & 12.659 \\
+Abl. & 6 & 93.30 & 94.68 & 93.30 & 94.68 & 13.029 \\
+Abl. & 7 & 91.19 & 93.12 & 91.19 & 93.12 & 13.367 \\
+\midrule
+CD & 3 & 95.88 & 96.56 & 95.88 & 96.56 & 11.925 \\
+CD & 4 & 95.39 & 96.22 & 95.39 & 96.22 & 12.309 \\
+CD & 5 & 94.53 & 95.57 & 94.53 & 95.57 & 12.659 \\
+CD & 6 & 93.25 & 94.65 & 93.25 & 94.65 & 13.029 \\
+CD & 7 & 91.13 & 93.11 & 91.13 & 93.11 & 13.367 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

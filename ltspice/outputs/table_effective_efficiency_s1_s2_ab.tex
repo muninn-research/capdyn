@@ -1,0 +1,42 @@
+\begin{table}[t]
+\centering
+\caption{Effective-efficiency comparison of \sysname against the energy-aware baselines and ablation.}
+\label{tab:efficiency_s1_s2_ab}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}llcrrrr@{}}
+\toprule
+Task set & Bank & $N$ & $\eta^{\mathrm{eff}}_{\sysname}$ & $\Delta$S1 & $\Delta$S2 & $\Delta$AB \\
+\midrule
+Expon. & D1 & 3 & 95.88 & 10.25 & 9.51 & -0.08 \\
+Expon. & D1 & 4 & 95.39 & 9.75 & 9.02 & -0.07 \\
+Expon. & D1 & 5 & 94.53 & 8.90 & 8.17 & -0.01 \\
+Expon. & D1 & 6 & 93.25 & 7.61 & 6.88 & -0.05 \\
+Expon. & D1 & 7 & 91.13 & 5.50 & 4.76 & -0.06 \\
+\midrule
+Expon. & D2 & 3 & 97.09 & 11.46 & 10.72 & -0.06 \\
+Expon. & D2 & 4 & 97.17 & 11.54 & 10.80 & -0.12 \\
+Expon. & D2 & 5 & 96.38 & 10.74 & 10.01 & -0.22 \\
+Expon. & D2 & 6 & 93.57 & 7.94 & 7.20 & -0.15 \\
+Expon. & D2 & 7 & 90.15 & 4.52 & 3.78 & -0.22 \\
+\midrule
+Linear & D1 & 3 & 96.56 & 7.52 & 6.72 & -0.10 \\
+Linear & D1 & 4 & 96.22 & 7.19 & 6.39 & -0.03 \\
+Linear & D1 & 5 & 95.57 & 6.54 & 5.73 & -0.03 \\
+Linear & D1 & 6 & 94.65 & 5.62 & 4.81 & -0.03 \\
+Linear & D1 & 7 & 93.11 & 4.08 & 3.28 & -0.01 \\
+\midrule
+Linear & D2 & 3 & 97.46 & 8.43 & 7.62 & -0.01 \\
+Linear & D2 & 4 & 97.41 & 8.38 & 7.58 & -0.02 \\
+Linear & D2 & 5 & 96.59 & 7.56 & 6.75 & -0.03 \\
+Linear & D2 & 6 & 94.29 & 5.26 & 4.45 & -0.05 \\
+Linear & D2 & 7 & 91.19 & 2.16 & 1.36 & -0.12 \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{2pt}
+\footnotesize
+\textbf{Notes.} $\eta^{\mathrm{eff}}_{\sysname}$ is reported in percent. $\Delta$S1, $\Delta$S2, and $\Delta$AB report effective-efficiency differences in percentage points relative to the corresponding reference.
+\end{table}

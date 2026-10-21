@@ -1,0 +1,42 @@
+\begin{table}[t]
+\centering
+\caption{Efficiency penalty of the unaware single-capacitor baseline S0 and effective-efficiency comparison with \sysname.}
+\label{tab:s0_efficiency_penalty}
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.12}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}llcrrrr@{}}
+\toprule
+Task set & Bank & $N$ & $\eta_{\mathrm{S0}}$ & $\eta^{\mathrm{eff}}_{\mathrm{S0}}$ & $\eta^{\mathrm{eff}}_{\sysname}$ & $\Delta\eta^{\mathrm{eff}}$ \\
+\midrule
+Expon. & D1 & 3 & 89.09 & 63.07 & 95.88 & 32.82 \\
+Expon. & D1 & 4 & 89.09 & 63.07 & 95.39 & 32.32 \\
+Expon. & D1 & 5 & 89.09 & 63.07 & 94.53 & 31.47 \\
+Expon. & D1 & 6 & 89.09 & 63.07 & 93.25 & 30.18 \\
+Expon. & D1 & 7 & 89.09 & 63.07 & 91.13 & 28.07 \\
+\midrule
+Expon. & D2 & 3 & 89.09 & 63.07 & 97.09 & 34.02 \\
+Expon. & D2 & 4 & 89.09 & 63.07 & 97.17 & 34.10 \\
+Expon. & D2 & 5 & 89.09 & 63.07 & 96.38 & 33.31 \\
+Expon. & D2 & 6 & 89.09 & 63.07 & 93.57 & 30.50 \\
+Expon. & D2 & 7 & 89.09 & 63.07 & 90.15 & 27.09 \\
+\midrule
+Linear & D1 & 3 & 92.70 & 77.89 & 96.56 & 18.66 \\
+Linear & D1 & 4 & 92.70 & 77.89 & 96.22 & 18.33 \\
+Linear & D1 & 5 & 92.70 & 77.89 & 95.57 & 17.67 \\
+Linear & D1 & 6 & 92.70 & 77.89 & 94.65 & 16.75 \\
+Linear & D1 & 7 & 92.70 & 77.89 & 93.11 & 15.22 \\
+\midrule
+Linear & D2 & 3 & 92.70 & 77.89 & 97.46 & 19.56 \\
+Linear & D2 & 4 & 92.70 & 77.89 & 97.41 & 19.52 \\
+Linear & D2 & 5 & 92.70 & 77.89 & 96.59 & 18.69 \\
+Linear & D2 & 6 & 92.70 & 77.89 & 94.29 & 16.40 \\
+Linear & D2 & 7 & 92.70 & 77.89 & 91.19 & 13.30 \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{2pt}
+\footnotesize
+\textbf{Notes.} Efficiencies are reported in percent. $\Delta\eta^{\mathrm{eff}}=\eta^{\mathrm{eff}}_{\sysname}-\eta^{\mathrm{eff}}_{\mathrm{S0}}$ is reported in percentage points.
+\end{table}

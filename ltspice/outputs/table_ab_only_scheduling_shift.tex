@@ -1,0 +1,42 @@
+\begin{table}[t]
+\centering
+\caption{Per-task first-completion shift of \sysname relative to the ablation baseline AB. Negative values indicate earlier first task completion under \sysname.}
+\label{tab:scheduling_ab_only}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}llcrrrrrr@{}}
+\toprule
+Task set & Bank & $N$ & $T_1$ & $T_2$ & $T_3$ & $T_4$ & $T_5$ & $T_6$ \\
+\midrule
+Expon. & D1 & 3 & -76.16 & -0.04 & -37.18 & -34.71 & -34.68 & -0.03 \\
+Expon. & D1 & 4 & -75.78 & -0.01 & -37.01 & -41.78 & -33.97 & -0.03 \\
+Expon. & D1 & 5 & -82.35 & -0.02 & -37.08 & -41.77 & -34.05 & -0.41 \\
+Expon. & D1 & 6 & -81.66 & 0.01 & -36.39 & -40.87 & -33.46 & -0.02 \\
+Expon. & D1 & 7 & -82.01 & -0.02 & -35.54 & -38.73 & -38.72 & -0.28 \\
+\midrule
+Expon. & D2 & 3 & -79.34 & -0.25 & -37.00 & -41.02 & -40.85 & -0.14 \\
+Expon. & D2 & 4 & -96.33 & -0.11 & -36.68 & -41.64 & -40.44 & -0.13 \\
+Expon. & D2 & 5 & -96.11 & -0.05 & -36.92 & -41.76 & -40.58 & -0.03 \\
+Expon. & D2 & 6 & -95.68 & -0.07 & -37.63 & -42.19 & -41.28 & -0.34 \\
+Expon. & D2 & 7 & -94.06 & 0.03 & -35.72 & -39.08 & -37.21 & -0.31 \\
+\midrule
+Linear & D1 & 3 & -55.54 & -0.39 & -0.17 & -19.41 & -0.13 & -0.03 \\
+Linear & D1 & 4 & -54.91 & -0.40 & -0.14 & -19.47 & -0.35 & -0.03 \\
+Linear & D1 & 5 & -54.53 & -0.08 & -0.02 & -19.36 & -0.01 & -0.00 \\
+Linear & D1 & 6 & -54.63 & 0.53 & 0.07 & -19.65 & 0.21 & 0.03 \\
+Linear & D1 & 7 & -56.29 & 0.42 & 0.06 & -20.71 & 0.08 & 0.06 \\
+\midrule
+Linear & D2 & 3 & -56.27 & -1.08 & -0.26 & -19.43 & -0.32 & -0.02 \\
+Linear & D2 & 4 & -56.31 & -1.37 & -0.40 & -19.84 & -0.31 & -0.02 \\
+Linear & D2 & 5 & -55.97 & -0.80 & -0.57 & -20.34 & -0.88 & -0.08 \\
+Linear & D2 & 6 & -55.96 & -0.12 & -0.01 & -22.67 & 0.01 & -0.00 \\
+Linear & D2 & 7 & -57.23 & 0.46 & 0.13 & -23.25 & 0.12 & 0.05 \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{2pt}
+\footnotesize
+\textbf{Notes.} Values report the first-completion shift $\Delta t_{i,\sysname/AB}$ in percent. AB denotes the ablation without energy-admissible task dispatch.
+\end{table}
