@@ -1,8 +1,7 @@
-# LTspice models — pending upload
+# LTspice models 
 
-The LTspice schematics, netlists, libraries, simulation input files and
-analysis scripts are **not included yet**. They will be added here in a future
-update.
+This folder holds the LTspice schematics, netlists, libraries, simulation input files and
+analysis scripts used to compute the results. 
 
 The paper evaluates 3–7 CapDYN stages with D1/D2 banks, compares against
 S0/S1/S2/AB, and uses a photovoltaic irradiance trace over 18,000 s with
