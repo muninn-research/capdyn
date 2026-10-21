@@ -1,0 +1,31 @@
+Version 4
+SymbolType CELL
+LINE Normal -64 48 64 0
+LINE Normal 64 0 -64 -48
+LINE Normal 0 48 0 24
+LINE Normal 0 -48 0 -24
+LINE Normal -32 -16 -64 -48
+LINE Normal -32 16 -32 -16
+LINE Normal -32 16 -64 48
+LINE Normal -64 16 -32 16
+LINE Normal -32 -16 -64 -16
+LINE Normal 64 0 80 0
+WINDOW 0 48 -52 Bottom 2
+WINDOW 3 72 -60 Top 2
+SYMATTR Prefix X
+SYMATTR Value CD4071B
+PIN 80 0 BOTTOM 8
+PINATTR PinName Y
+PINATTR SpiceOrder 1
+PIN -64 -16 LEFT 8
+PINATTR PinName A
+PINATTR SpiceOrder 2
+PIN -64 16 LEFT 8
+PINATTR PinName B
+PINATTR SpiceOrder 3
+PIN 0 -48 TOP 8
+PINATTR PinName VCC
+PINATTR SpiceOrder 4
+PIN 0 48 BOTTOM 8
+PINATTR PinName AGND
+PINATTR SpiceOrder 5

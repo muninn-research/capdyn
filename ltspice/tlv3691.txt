@@ -1,0 +1,357 @@
+* TLV3691
+*****************************************************************************
+* (C) Copyright 2012 Texas Instruments Incorporated. All rights reserved.                                            
+*****************************************************************************
+** This model is designed as an aid for customers of Texas Instruments.
+** TI and its licensors and suppliers make no warranties, either expressed
+** or implied, with respect to this model, including the warranties of 
+** merchantability or fitness for a particular purpose.  The model is
+** provided solely on an "as is" basis.  The entire risk as to its quality
+** and performance is with the customer.
+*****************************************************************************
+*
+** Released by: WEBENCH(R) Design Center, Texas Instruments Inc.
+* Part: TLV3691
+* Date: 6/7/2018
+* Model Type: Transient
+* Simulator: Pspice
+* Simulator Version: Pspice 16.2.0.p001
+* EVM Order Number: N/A 
+* EVM Users Guide: N/A
+* Datasheet: SBOS694A - November 2015
+*
+* Model Version: 2.0
+*
+*****************************************************************************
+*
+* Updates:
+*
+* Version 1.0 : Release to Web  
+* Version 2.0 : Correct output glitch on power-up  
+*
+*****************************************************************************
+* Notes: This macromodel conforms with the data sheet specs and features
+* over specified power supplies and temperature range for the following:
+* 1. Nominal offset voltage (VOS) and drift over temperature
+* 2. Bias current (IIB) and drift over temperature
+* 3. Power-supply rejection ratio (PSRR)
+* 4. Input common-mode voltage range (CMIR)
+* 5. Hysterisis
+* 6. Output voltage swing versus output current
+* 7. Quiescent current
+* 8. Operating temperature range
+* 9. Power supply voltage range
+* 10.Power-on reset
+* 
+* The macro has a fixed propagation delay of 28us.
+* 
+* The macro output will be disabled if the input pins or power supply pins
+* are driven beyond the specified limits in the ABSOLUTE MAXIMUM RATINGS
+* shown in the device data sheet.
+*****************************************************************************
+*
+*
+*$
+.SUBCKT TLV3691 INP INN VCC VEE OUT
+C_C4         INN INP  3p  TC=0,0 
+E_E2         N708688 0 VEE 0 1
+R_R16         GNDF N901590  1k TC=0,0 
+X_U55         INPUT_OUTN INPUTN_VOS VCC VEE GNDF TLV3691_LIM_IN 
+X_U50         INN VCC TLV3691_d_ideal 
+E_E11         FB_P GNDF OUT GNDF 1
+R_R17         GNDF N901858  1k TC=0,0 
+X_U59         INPUTP_GBW INPUTP_FBK FB_P VCC VEE EN_UND GNDF TLV3691_FBK 
+X_U56         INPUT_OUTP INPUTP_VOS VCC VEE GNDF TLV3691_LIM_IN 
+X_U48         VEE INN TLV3691_d_ideal
+X_U67         INPUT_ZOUT INPUT_VIMON VCC VEE GNDF TLV3691_ROS_VCC 
+E_E4         N708582 0 N708688 0 -1
+E_E13         N900204 N900481 INPUTP_DEL GNDF 1
+X_U66         INPUTP_GBW INPUTN_GBW INPUT_VCLAMP EN_DLY VCC_DLY VEE_DLY
++  GNDF_DLY TLV3691_GBW_SLEW_VCC 
+R_R18         EN GNDF  1k TC=0,0 
+R_R14         GNDF N900204  1k TC=0,0 
+X_U38         VCC VEE N277535 VIMON GNDF TLV3691_IQ 
+X_U42         VICM INP INN GNDF TLV3691_VICM 
+R_R15         GNDF N900481  1k TC=0,0 
+E_E5         GNDF 0 N708586 N708582 0.5
+X_U32         INPUT_VIMON OUT VIMON GNDF TLV3691_AMETER
+X_U68         EN_DLY VCC_DLY VEE_DLY GNDF_DLY EN VCC VEE GNDF
++  TLV3691_INTERNAL_POWERUP_EN_DELAY 
+V_V5         N277535 GNDF 1Vdc
+R_R13         EN_UND GNDF  1k TC=0,0 
+E_E14         N901590 N901858 INPUTN_DEL GNDF 1
+R_R4         INN INPUT_OUTN  1 TC=0,0 
+X_U64         N901590 N901858 INPUTN_FBK GNDF GNDF TLV3691_TDELAY 
+X_U63         N900204 N900481 INPUTP_FBK GNDF GNDF TLV3691_TDELAY 
+X_U43         N764971 GNDF VICM VCC VEE GNDF TLV3691_VOS 
+E_E9         INPUTN_VOS INPUTN_DEL N764971 GNDF -0.5
+E_E12         FB_N GNDF OUT GNDF -1
+E_E8         INPUTP_VOS INPUTP_DEL N764971 GNDF 0.5
+X_U62         EN EN_UND INP INN VCC VEE GNDF TLV3691_ABSMAX_TEST 
+X_U60         VCC VEE INPUT_VCLAMP INPUT_ZOUT VIMON EN GNDF TLV3691_VCLAMP_W_SENSE 
+X_U34         INPUT_OUTP GNDF VCC VEE VICM GNDF TLV3691_IIBP
+X_U33         INPUT_OUTN GNDF VCC VEE VICM GNDF TLV3691_IIBN
+X_U49         VEE INP TLV3691_d_ideal
+R_R3         INP INPUT_OUTP  1 TC=0,0 
+C_C2         INN GNDF  2p  TC=0,0 
+X_U47         INP VCC TLV3691_d_ideal
+E_E1         N708586 0 VCC 0 1
+C_C3         GNDF INP  2p  TC=0,0 
+X_U61         INPUTN_GBW INPUTN_FBK FB_N VCC VEE EN_UND GNDF TLV3691_FBK 
+.ENDS
+*$
+**
+**
+.subckt TLV3691_d_ideal in out
+din in out dmod
+.model dmod d
++ rs=1
++ tnom=27
+.ends
+*$
+**
+**
+.SUBCKT TLV3691_LIM_IN IN OUT UL LL GNDF
+.PARAM VHR = 0.1
+EO OUT GNDF VALUE = {MAX(MIN(V(IN,GNDF),V(UL,GNDF)+VHR),V(LL,GNDF)-VHR)}
+.ENDS
+*$
+**
+**
+.SUBCKT TLV3691_FBK OUT IN FB VOMAX VOMIN EN GNDF
+.PARAM HYST = 0.018
+EX NX GNDF VALUE = {HYST/(HYST+V(VOMAX,GNDF) - V(VOMIN,GNDF))}
+EB NB GNDF VALUE = {V(NX,GNDF)/(1+V(NX,GNDF))}
+EFB NFB_LIM GNDF VALUE = {MAX(MIN(V(FB,GNDF),V(VOMAX,GNDF)),V(VOMIN,GNDF))}
+EO OUT GNDF VALUE = {V(EN,GNDF)*V(NB,GNDF)*V(NFB_LIM,GNDF) + (1-V(NB,GNDF))*V(IN,GNDF)}
+.ENDS
+*$
+**
+**
+.SUBCKT TLV3691_ROS_VCC 1 2 VCC VEE GNDF
+.PARAM VCC_DRIFT = -3.28
+.PARAM VS_NOM = 6.5
+.PARAM R_NOM = 210
+EVS NVS GNDF VALUE = {V(VCC,VEE)}
+EZ NZ GNDF VALUE = {R_NOM*(1 + VCC_DRIFT*(V(NVS,GNDF) - VS_NOM))}
+GOS 1 2 VALUE = {V(1,2)/V(NZ,GNDF)}
+.ENDS
+*$
+**
+**
+.SUBCKT TLV3691_GBW_SLEW_VCC  VIP  VIM  VO  SHDN VCC VEE GNDF 
+.PARAM Aol = 120  
+.PARAM GBW = 1e12  
+.PARAM SRP = 1e9  
+.PARAM SRN = 1e9 
+.PARAM IT = 0.001
+.PARAM PI = 3.141592
+.PARAM IP = {IT*MAX(1,SRP/SRN)}
+.PARAM IN = {IT*MIN(-1,-SRN/SRP)}
+.PARAM CC = {IT*MAX(1/SRP,1/SRN)}
+.PARAM FP = {GBW/PWR(10,AOL/20)}
+.PARAM RC = {1/(2*PI*CC*FP)}
+.PARAM GC = {PWR(10,AOL/20)/RC}
+G1p GNDF OUTG1p VALUE = {MAX(MIN(GC*V(SHDN,GNDF)*V(VIP,VIM),IP),IN)}
+G1n OUTG1n GNDF VALUE = {MAX(MIN(GC*V(SHDN,GNDF)*V(VIP,VIM),IP),IN)}
+RG1p OUTG1p GNDF {0.5*RC}
+Cg1dp OUTG1p GNDF {2*CC} IC=0
+RG1n OUTG1n GNDF {0.5*RC}
+Cg1dn OUTG1n GNDF {2*CC} IC=0
+G1OUT GNDF VO VALUE = {MAX(MIN(V(SHDN,GNDF)*V(OUTG1p,OUTG1n),10),-10)}
+ROUT VO GNDF 1
+.ENDS
+*$
+**
+**
+.SUBCKT TLV3691_IQ VCC VEE SHDN VIMON GNDF
+.PARAM IQ_NOM = 67.2n
+.PARAM IQ_SHDN = 1n
+.PARAM Geq = 1.2n
+GVAR VCC VEE VALUE = {(V(VCC,VEE)+ 1e-9)*Geq}
+GIQ VCC VEE VALUE = {V(SHDN,GNDF)*IQ_NOM + (1-V(SHDN,GNDF))*IQ_SHDN}
+.ENDS
+*$
+**
+**
+.SUBCKT TLV3691_VICM OUT INP INN GNDF
+EOUT OUT GNDF VALUE = {0.5*(V(INP,GNDF) + V(INN,GNDF))}
+.ENDS
+*$
+**
+**
+.SUBCKT TLV3691_AMETER  VI  VO VIMON GNDF
+.PARAM GAIN = 1
+VSENSE VI VO DC = 0
+EMETER VIMON GNDF VALUE = {I(VSENSE)*GAIN}
+.ENDS
+*$
+**
+**
+.SUBCKT TLV3691_INTERNAL_POWERUP_EN_DELAY EN_DLY VCC_INT_DLY VEE_INT_DLY GNDF_INT_DLY 
++ EN VCC VEE GNDF
+.PARAM DELAY = 200e-6
+.PARAM RDELAY = 1e5
+.PARAM CDELAY = {DELAY/(0.7*RDELAY)}
+EOUT NPWR_APPLIED 0 VALUE = {0.5*(1 + (SGN(V(VCC,VEE)) + ABS(SGN(V(VCC,VEE))) - 1))}
+RD NPWR_APPLIED ND1 {RDELAY}
+CD ND1 0 {CDELAY}
+VD ND2 0 0.5V
+EDLY NDLY 0 VALUE = {0.5*(1 + (1 + SGN(V(ND1,ND2)) - ABS(SGN(V(ND1,ND2)))))}
+EVCC_DLY VCC_INT_DLY GNDF_INT_DLY VALUE = {V(NDLY)*V(VCC,GNDF)}
+EVEE_DLY VEE_INT_DLY GNDF_INT_DLY VALUE = {V(NDLY)*V(VEE,GNDF)}
+EGND_DLY GNDF_INT_DLY 0 VALUE = {V(NDLY)*V(GNDF)}
+EEN_DLY EN_DLY GNDF_INT_DLY VALUE = {V(NDLY)*V(EN,GNDF)}
+.ENDS
+*$
+**
+**
+.SUBCKT TLV3691_TDELAY INP INN OUTP OUTN GNDF
+.PARAM Delay = 28u
+E1 VIXP VIXN INP INN 1
+RIXP VIXP GNDF 25
+RIXN VIXN GNDF 25
+T1 VIXP VIXN VDXP VDXN Z0=50 TD={Delay}
+R1 VDXP GNDF 25
+R2 VDXN GNDF 25
+E2 OUTP OUTN VDXP VDXN 1
+R3 OUTP GNDF 1
+R4 OUTN GNDF 1
+.ENDS
+*$
+**
+**
+.SUBCKT TLV3691_VOS OUT IN VICM VCC VEE GNDF
+.PARAM SCALE = 1e-6
+.PARAM DRIFT = 50
+.PARAM VICM_SHIFT = 428
+.PARAM VCC_SHIFT = 200
+.PARAM VCC_NOM = 3.75
+.PARAM VOS_TYP = 3000
+EDRIFT NDRIFT 0 VALUE = {DRIFT*(TEMP - 27)}
+ESHIFT NSHIFT 0 VALUE = {VICM_SHIFT*V(VICM,GNDF)}
+EVCCSHIFT NVCCSHIFT 0 VALUE = {VCC_SHIFT*(V(VCC,VEE) - VCC_NOM)}
+EVOS OUT IN VALUE = {SCALE*(VOS_TYP + V(NDRIFT) + V(NSHIFT) + V(NVCCSHIFT))}
+.ENDS
+*$
+**
+**
+.SUBCKT TLV3691_ABSMAX_TEST NEN_D NEN_UND INP INN VCC VEE GNDF
+.PARAM VSmax = 7
+.PARAM VSmin = 0.899
+.PARAM INdV = 0.1
+.PARAM DELAY = 200e-6
+.PARAM RDELAY = 1e5
+.PARAM CDELAY = {DELAY/(0.7*RDELAY)}
+ET1 N1 0 VALUE = {MAX(SGN(V(VCC,INP)+INdV),0)}
+ET2 N2 0 VALUE = {MAX(SGN(V(INP,VEE)+INdV),0)}
+ET3 N3 0 VALUE = {MAX(SGN(V(VCC,INN)+INdV),0)}
+ET4 N4 0 VALUE = {MAX(SGN(V(INN,VEE)+INdV),0)}
+ET5 N5 0 VALUE = {MAX(SGN(VSmax - V(VCC,VEE)),0)}
+ET6 N6 0 VALUE = {MAX(SGN(V(VCC,VEE) - VSmin),0)}
+*****
+*****
+EOUT NVALID GNDF VALUE = {V(N5)*V(N6)}
+EEN_D NEN_D GNDF VALUE = {V(NVALID,GNDF)}
+EEN_UND NEN_UND GNDF VALUE = {V(NVALID,GNDF)}
+***
+****
+.ENDS
+*$
+**
+**
+.SUBCKT TLV3691_VCLAMP_W_SENSE  VCC  VEE  VI  VO VIMON  EN GNDF
+.PARAM TNOM = 25
+***
+.PARAM VCC_MAX = 6.5
+.PARAM VCC_MIN = 0.9
+.PARAM HR_NOM_POS = 0.070
+.PARAM HR_NOM_NEG = 0.035
+***
+.PARAM ISC_NOM_POS = 0.034
+.PARAM ISC_NOM_NEG = 0.038
+.PARAM ISC_POS_TC = -0.00220
+.PARAM ISC_NEG_TC = -0.00207
+.PARAM ISC_POS_VC = 0.175
+.PARAM ISC_NEG_VC = 0.177
+***
+.PARAM REQ_NOM_POS = 64.2
+.PARAM REQ_NOM_NEG = 63
+.PARAM REQ_POS_TC = 0.00315
+.PARAM REQ_NEG_TC = 0.00234
+.PARAM REQ_POS_VC = -1.91
+.PARAM REQ_NEG_VC = -0.846
+***
+.PARAM ROS = 210
+.PARAM ROS_VC = -3.28
+***
+EDVC1 NDV1 GNDF VALUE = {V(VCC,VEE) - VCC_MAX}
+EDVC2 NDV2 GNDF VALUE = {(V(VCC,VEE) - VCC_MIN)/(VCC_MAX - VCC_MIN)}
+EDTC NDT GNDF VALUE = {MAX(MIN(TEMP - TNOM, 100),-65)}
+**
+EREQ_POS NREQ_POS GNDF VALUE = {(REQ_NOM_POS)*(1 
++ + REQ_POS_TC*V(NDV2,GNDF)*V(NDT,GNDF)
++ + REQ_POS_VC*V(NDV1,GNDF))}
+**
+EISC_POS NISC_POS GNDF VALUE = {ISC_NOM_POS*(1
++ + ISC_POS_TC*V(NDV2,GNDF)*V(NDT,GNDF)
++ + ISC_POS_VC*V(NDV1,GNDF))}
+**
+EREQ_NEG NREQ_NEG GNDF VALUE = {(REQ_NOM_NEG)*(1 
++ + REQ_NEG_TC*V(NDV2,GNDF)*V(NDT,GNDF)
++ + REQ_NEG_VC*V(NDV1,GNDF))}
+**
+EISC_NEG NISC_NEG GNDF VALUE = {ISC_NOM_NEG*(1
++ + ISC_NEG_TC*V(NDV2,GNDF)*V(NDT,GNDF)
++ + ISC_NEG_VC*V(NDV1,GNDF))}
+**
+EROS NROS GNDF VALUE = {ROS*(1 + ROS_VC*V(NDV1,GNDF))}
+***
+*EHRPOS HRPOS GNDF VALUE = {MIN(V(VIMON,GNDF)*REQ_NOM_POS,ISC_NOM_POS*ROS-V(VCC,GNDF))}
+*EHRNEG HRNEG GNDF VALUE = {MAX(V(VIMON,GNDF)*REQ_NOM_NEG,-ISC_NOM_NEG*ROS-V(VEE,GNDF))}
+***
+EHRPOS HRPOS GNDF VALUE = {MIN(V(VIMON,GNDF)*(V(NROS,GNDF) - V(NREQ_POS,GNDF)),
++ V(NISC_POS,GNDF)*V(NROS,GNDF)-V(VCC,GNDF))}
+EHRNEG HRNEG GNDF VALUE = {MAX(V(VIMON,GNDF)*(V(NROS,GNDF) - V(NREQ_NEG,GNDF)),
++ -V(NISC_NEG,GNDF)*V(NROS,GNDF)-V(VEE,GNDF))}
+***
+EPCLIP  VCC_CLP GNDF VALUE = {V(VCC,GNDF) - HR_NOM_POS + V(HRPOS,GNDF)}
+ENCLIP  VEE_CLP GNDF VALUE = {V(VEE,GNDF) + HR_NOM_NEG + V(HRNEG,GNDF)}
+ECLAMP  VO GNDF VALUE = {V(EN,GNDF)*MAX(MIN(V(VI,GNDF), V(VCC_CLP,GNDF)), V(VEE_CLP,GNDF))}
+.ENDS
+*$
+*.ENDS
+**
+**
+.SUBCKT TLV3691_IIBN OUT IN VCC VEE INN GNDF
+.PARAM SCALE = 1p
+.PARAM IIBtyp = 29
+.PARAM m2v = 0.001
+**** IIB doubles w/every +10 degrees above room temp ****
+EEXP NBASE 0 VALUE = {IF(TEMP < 25,1.7,2)}
+EIIBt NIIBt 0 VALUE = {MAX(0.001,PWR(V(NBASE),(TEMP-27)/10))}
+******
+**** IIB shift from input voltage ****
+Ein Nin 0 VALUE = {V(INN,GNDF)}
+E2v N2v 0 VALUE = {m2v*V(Nin) + IIBtyp}
+*** 
+EIIBv NIIBv 0 VALUE = {V(N2v)/1}
+****
+GOUT OUT IN VALUE = {SCALE*(V(NIIBt)*V(NIIBv))}
+.ENDS
+*$
+**
+**
+.SUBCKT TLV3691_IIBP OUT IN VCC VEE INP GNDF
+.PARAM SCALE = 1p
+.PARAM IIBtyp = 30
+.PARAM m2v = 0.001
+EIIBt NIIBt 0 VALUE = {MAX(0.001,PWR(2,(TEMP-27)/10))}
+Ein Nin 0 VALUE = {V(INP,GNDF)}
+E2v N2v 0 VALUE = {m2v*V(Nin) + IIBtyp}
+EIIBv NIIBv 0 VALUE = {V(N2v)/1}
+GOUT OUT IN VALUE = {SCALE*(V(NIIBt)*V(NIIBv))}
+.ENDS
+**
+**
+*$
