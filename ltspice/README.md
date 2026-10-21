@@ -1,6 +1,6 @@
 # LTspice models 
 
-This folder holds the LTspice schematics, libraries, simulation input files (p1tablong2.txt) and
+This folder holds the LTspice schematics, libraries, simulation input files (p1_tablong2.txt) and
 analysis script (capdyn_merge_with_unaware_benchmark.m) used to compute the results. 
 
 The paper evaluates 3–7 CapDYN stages with D1/D2 banks, compares against
